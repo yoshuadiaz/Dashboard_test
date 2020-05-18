@@ -27,7 +27,7 @@ const Headbar = (props) => {
         value={Intl.NumberFormat().format(gr[1])}
       />
     ))
-
+  console.log(rawGeneralResults['Positivo SARS-CoV-2'])
   return (
     <div className='headbar'>
       {!hasData && <Statistic size='small' inverted label='Estatus' value='Descargando datos' />}
@@ -37,6 +37,15 @@ const Headbar = (props) => {
             inverted
             value={Intl.NumberFormat().format(rawTotal)}
             label='PRUEBAS TOTALES'
+          />
+          <Statistic
+            inverted
+            value={`${
+                Intl
+                .NumberFormat()
+                .format((rawGeneralResults['Positivo SARS-CoV-2'] / rawTotal) * 100)
+            }%`}
+            label='PORCENTAJE DE INFECTADOS'
           />
           {
             rawGeneralResults &&

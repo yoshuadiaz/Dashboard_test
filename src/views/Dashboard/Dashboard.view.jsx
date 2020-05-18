@@ -1,6 +1,9 @@
 import React from 'react'
 import Headbar from '../../components/Headbar/Headbar'
 import MapGeojson from '../../components/Map/Map'
+import Sidebar from '../../components/Sidebar/Sidebar'
+import './Dashboard.css'
+
 const App = (props) => {
   const {
     position,
@@ -8,23 +11,26 @@ const App = (props) => {
     setStyles,
     hasData,
     mapData,
-    headerData,
+    covidData,
     className
   } = props
   return (
-    <div>
+    <div className='dashboard'>
       <Headbar
         hasData={hasData}
-        data={headerData}
+        data={covidData}
       />
-      <MapGeojson
-        position={position}
-        onEachFeature={onEachFeature}
-        setStyles={setStyles}
-        hasData={hasData}
-        data={mapData}
-        className={className || ''}
-      />
+      <div className='dashboard_content'>
+        <MapGeojson
+          position={position}
+          onEachFeature={onEachFeature}
+          setStyles={setStyles}
+          hasData={hasData}
+          data={mapData}
+          className={className || ''}
+        />
+        <Sidebar covidData={covidData} hasData={hasData} />
+      </div>
     </div>
   )
 }

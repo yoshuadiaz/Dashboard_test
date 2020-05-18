@@ -1,0 +1,20 @@
+.sidebar {
+  @apply bg-black text-gray-500 relative;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+
+  &_item {
+    border-bottom: 1px solid;
+    &_title {
+      @apply bg-blue-900 px-2 !important;
+    }
+
+    &_content {
+      @apply bg-gray-900 m-0 overflow-hidden p-4 !important;
+
+      h4, h5, strong {
+        @apply text-gray-200;
+      }
+    }
+  }
+}

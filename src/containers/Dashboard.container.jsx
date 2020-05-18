@@ -8,10 +8,14 @@ const DashboardContainer = () => {
     const stateName = feature.properties.state_name.toUpperCase()
     const data = covidData.entidades[stateName]
     const average = (data['Positivo SARS-CoV-2'] / data.PRUEBAS_TOTALES) * 100
-    return { color: '#600', fillColor: `hsl(0, 100%, ${50 - average}%)`, fillOpacity: '.8' }
+    return { color: '#600', fillColor: `hsl(0, 100%, ${100 - average}%)`, fillOpacity: '.8' }
   }
   const infoData = ({ title, data }) => `
     <strong>${title}</strong>
+    <br/>
+    <span>
+    Porcentaje de Infectados: <strong>${Intl.NumberFormat().format((data['Positivo SARS-CoV-2'] / data.PRUEBAS_TOTALES) * 100)}</strong> 
+    </span>
     <br/>
     <span>
     Pruebas totales: <strong>${Intl.NumberFormat().format(data.PRUEBAS_TOTALES)}</strong> 
@@ -52,6 +56,7 @@ const DashboardContainer = () => {
     getApiData().then(r => {
       setCovidData(r)
     })
+    // setCovidData(mockData)
   }, [])
   const position = [23.451, -99.125]
   return (
@@ -60,7 +65,7 @@ const DashboardContainer = () => {
       onEachFeature={onEachFeature}
       setStyles={setStyles}
       hasData={!!covidData}
-      headerData={covidData}
+      covidData={covidData}
       mapData={states}
     />
   )
