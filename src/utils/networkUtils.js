@@ -6,7 +6,7 @@ export const getApiData = () => {
   const resultadosGenerales = {}
   const resultadosGenero = {}
   let total = 0
-  axios.get('http://localhost:8000/api')
+  return axios.get('/api')
     .then(function (response) {
       // handle success
       // console.log(response);
@@ -28,7 +28,7 @@ export const getApiData = () => {
             ...s.GENEROS,
             [d.sexo]: {
               ...s.GENEROS[d.sexo],
-              TOTALES: 'TOTALES' in s.GENEROS[d.sexo] ? s.GENEROS[d.sexo].TOTALES + 1 : 1,
+              PRUEBAS_TOTALES: 'PRUEBAS_TOTALES' in s.GENEROS[d.sexo] ? s.GENEROS[d.sexo].PRUEBAS_TOTALES + 1 : 1,
               [d.resultado]: `${d.resultado}` in s.GENEROS[d.sexo] ? s.GENEROS[d.sexo][d.resultado] + 1 : 1
             }
           },
@@ -45,10 +45,10 @@ export const getApiData = () => {
 
         total++
       })
-      console.log(JSON.stringify(entidades, null, 2))
-      console.log(resultadosGenerales)
-      console.log(resultadosGenero)
-      console.log('Total de casos: ' + total)
+      // console.log(JSON.stringify(entidades, null, 2))
+      // console.log(resultadosGenerales)
+      // console.log(resultadosGenero)
+      // console.log('Total de casos: ' + total)
 
       return {
         entidades,
@@ -60,8 +60,5 @@ export const getApiData = () => {
     .catch(function (error) {
       // handle error
       console.log(error)
-    })
-    .then(function () {
-      // always executed
     })
 }

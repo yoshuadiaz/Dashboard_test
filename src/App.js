@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Dashboard from './containers/Dashboard.container'
 const App = () => {
   return (
     <div>
-      DASHBOARD
+      <Dashboard />
     </div>
   )
 }

@@ -1,0 +1,7 @@
+.headbar {
+  @apply bg-gray-900 w-full text-gray-300 p-4;
+  height: 150px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,7 @@
+.leaflet-container {
+  @apply mx-auto w-full;
+  height: calc(100vh - 150px);
+}
+.mapGeojson {
+  @apply relative;
+}

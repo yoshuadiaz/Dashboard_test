@@ -7,7 +7,7 @@ let total = 0
 axios.get('http://localhost:8000/api')
   .then(function (response) {
     // handle success
-    // console.log(response);
+    console.log(response.data[0])
     response.data.map(d => {
       let s = sum[d.entidad_res]
       if (s === undefined) { s = 0 }

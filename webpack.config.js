@@ -47,6 +47,17 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000,
+    proxy: {
+      '/api': {
+        changeOrigin: true,
+        target: 'http://localhost:8000'
+      }
+    }
+  },
   plugins: [
     new HtmlWebPackPlugin({
       template: './public/index.html',
